@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal - My Website</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 20px;
+        }
+        #terminal {
+            width: 100%;
+            height: 400px;
+            background-color: #000;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        #input {
+            background: none;
+            border: none;
+            color: #00ff00;
+            font-family: inherit;
+            font-size: inherit;
+            width: 100%;
+            outline: none;
+        }
+        .prompt {
+            color: #00ff00;
+        }
+        #matrixCanvas {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #00ff00;">Terminal Simulator</h1>
+    <div id="terminal">
+        <div class="prompt">user@mywebsite:~$ </div>
+    </div>
+    <input type="text" id="input" autofocus placeholder="Ketik perintah di sini...">
+    <canvas id="matrixCanvas"></canvas>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const input = document.getElementById('input');
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const ctx = matrixCanvas.getContext('2d');
+        let commandHistory = [];
+        let historyIndex = -1;
+        let matrixAnimation = null;
+
+        function printOutput(text) {
+            terminal.innerHTML += text + '\n';
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function executeCommand(cmd) {
+            const args = cmd.trim().split(' ');
+            const command = args[0].toLowerCase();
+            let output = '';
+
+            switch (command) {
+                case 'help':
+                    output = 'Perintah tersedia: help, ls, pwd, echo [text], clear, date, whoami, history, dir [/s], cmatrix, ping [host], curl [URL]';
+                    break;
+                case 'ls':
+                    output = 'index.html\nstyle.css\nscript.js\nlagu.mp3\nterminal.html';
+                    break;
+                case 'pwd':
+                    output = '/home/user/website';
+                    break;
+                case 'echo':
+                    output = args.slice(1).join(' ');
+                    break;
+                case 'clear':
+                    terminal.innerHTML = '<div class="prompt">user@mywebsite:~$ </div>';
+                    return;
+                case 'date':
+                    output = new Date().toString();
+                    break;
+                case 'whoami':
+                    output = 'user';
+                    break;
+                case 'history':
+                    output = commandHistory.join('\n');
+                    break;
+                case 'dir':
+                    if (args[1] === '/s') {
+                        output = 'Direktori dari C:\\website\n\n';
+                        output += '02/10/2023  10:00    <DIR>          assets\n';
+                        output += '02/10/2023  10:00    <DIR>          images\n';
+                        output += '02/10/2023  10:00                 1 index.html\n';
+                        output += '02/10/2023  10:00                 2 style.css\n';
+                        output += '02/10/2023  10:00                 3 script.js\n';
+                        output += '02/10/2023  10:00                 4 lagu.mp3\n';
+                        output += '02/10/2023  10:00                 5 terminal.html\n';
+                        output += '\nDirektori dari C:\\website\\assets\n\n';
+                        output += '02/10/2023  10:00                 1 logo.png\n';
+                        output += '\nDirektori dari C:\\website\\images\n\n';
+                        output += '02/10/2023  10:00                 1 foto.jpg\n';
+                        output += '               2 File(s)          1 bytes\n';
+                        output += '               2 Dir(s)   1,024 bytes free\n';
+                    } else {
+                        output = '02/10/2023  10:00    <DIR>          assets\n';
+                        output += '02/10/2023  10:00    <DIR>          images\n';
+                        output += '02/10/2023  10:00                 1 index.html\n';
+                        output += '02/10/2023  10:00                 2 style.css\n';
+                        output += '02/10/2023  10:00                 3 script.js\n';
+                        output += '02/10/2023  10:00                 4 lagu.mp3\n';
+                        output += '02/10/2023  10:00                 5 terminal.html\n';
+                    }
+                    break;
+                case 'cmatrix':
+                    startMatrix();
+                    return;
+                case 'ping':
+                    if (args[1]) {
+                        const host = args[1];
+                        const ip = host === 'google.com' ? '8.8.8.8' : '192.168.1.1'; // Simulasi IP
+                        output = `Pinging ${host} [${ip}] with 32 bytes of data:\n\n`;
+                        for (let i = 1; i <= 4; i++) {
+                            const time = Math.floor(Math.random() * 50) + 10; // Latency acak 10-60ms
+                            output += `Reply from ${ip}: bytes=32 time=${time}ms TTL=128\n`;
+                        }
+                        output += `\nPing statistics for ${ip}:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 10ms, Maximum = 50ms, Average = 30ms`;
+                    } else {
+                        output = 'Usage: ping [host] (e.g., ping google.com)';
+                    }
+                    break;
+                case 'curl':
+                    if (args[1]) {
+                        const url = args[1];
+                        output = `% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n`;
+                        output += `  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n`;
+                        output += `100   125  100   125    0     0   1250      0 --:--:-- --:--:-- --:--:--  1250\n\n`;
+                        output += `HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: 125\n\n`;
+                        output += `<html><body><h1>Hello from ${url}</h1><p>This is a simulated response.</p></body></html>`;
+                    } else {
+                        output = 'Usage: curl [URL] (e.g., curl https://example.com)';
+                    }
+                    break;
+                default:
+                    output = `Perintah '${command}' tidak ditemukan. Ketik 'help' untuk bantuan.`;
+            }
+
+            printOutput(output);
+            printOutput('<div class="prompt">user@mywebsite:~$ </div>');
+        }
+
+        function startMatrix() {
+            matrixCanvas.style.display = 'block';
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            const columns = Math.floor(matrixCanvas.width / 20);
+            const drops = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+                ctx.fillStyle = '#0f0';
+                ctx.font = '15px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = String.fromCharCode(Math.random() * 128);
+                    ctx.fillText(text, i * 20, drops[i] * 20);
+                    if (drops[i] * 20 > matrixCanvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            matrixAnimation = setInterval(draw, 33);
+
+            document.addEventListener('keydown', function stopMatrix(e) {
+                if (e.key === 'q') {
+                    clearInterval(matrixAnimation);
+                    matrixCanvas.style.display = 'none';
+                    document.removeEventListener('keydown', stopMatrix);
+                    printOutput('Matrix stopped. Kembali ke terminal.');
+                    printOutput('<div class="prompt">user@mywebsite:~$ </div>');
+                }
+            });
+        }
+
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const cmd = input.value;
+                if (cmd.trim()) {
+                    commandHistory.push(cmd);
+                    historyIndex = commandHistory.length;
+                    printOutput(cmd);
+                    executeCommand(cmd);
+                } else {
+                    printOutput('<div class="prompt">user@mywebsite:~$ </div>');
+                }
+                input.value = '';
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                } else {
+                    input.value = '';
+                    historyIndex = commandHistory.length;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
