@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal - My Website</title>
+    <title>Tempat ngehack satelit😈</title>
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -46,11 +46,11 @@
     </style>
 </head>
 <body>
-    <h1 style="color: #00ff00;">Terminal Simulator</h1>
+    <h1 style="color: #00ff00;">Hack satelit😈</h1>
     <div id="terminal">
-        <div class="prompt">user@mywebsite:~$ </div>
+        <div class="prompt">user@Kacungspnr:~$ </div>
     </div>
-    <input type="text" id="input" autofocus placeholder="Ketik perintah di sini...">
+    <input type="text" id="input" autofocus placeholder="Ketik untuk memasukan text😈...">
     <canvas id="matrixCanvas"></canvas>
 
     <script>
@@ -86,7 +86,7 @@
                     output = args.slice(1).join(' ');
                     break;
                 case 'clear':
-                    terminal.innerHTML = '<div class="prompt">user@mywebsite:~$ </div>';
+                    terminal.innerHTML = '<div class="prompt">user@kacungspnr:~$ </div>';
                     return;
                 case 'date':
                     output = new Date().toString();
@@ -157,7 +157,7 @@
             }
 
             printOutput(output);
-            printOutput('<div class="prompt">user@mywebsite:~$ </div>');
+            printOutput('<div class="prompt">user@kacungspnr:~$ </div>');
         }
 
         function startMatrix() {
@@ -194,7 +194,7 @@
                     matrixCanvas.style.display = 'none';
                     document.removeEventListener('keydown', stopMatrix);
                     printOutput('Matrix stopped. Kembali ke terminal.');
-                    printOutput('<div class="prompt">user@mywebsite:~$ </div>');
+                    printOutput('<div class="prompt">user@kacungspnr:~$ </div>');
                 }
             });
         }
@@ -208,7 +208,7 @@
                     printOutput(cmd);
                     executeCommand(cmd);
                 } else {
-                    printOutput('<div class="prompt">user@mywebsite:~$ </div>');
+                    printOutput('<div class="prompt">user@kacungspnr:~$ </div>');
                 }
                 input.value = '';
             } else if (e.key === 'ArrowUp') {
@@ -230,4 +230,5 @@
         });
     </script>
 </body>
+
 </html>
