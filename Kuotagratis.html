@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selamat Hari Raya Galungan dan Kuningan - 800GB Data Gratis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-color: #fff7f0;
+      color: #333;
+    }
+    .header-banner {
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIZiz_f2iCiUuGR3W47N9wH2HTIFAnqIiscxcoiRvAJOxGtGE3FlIbTqABTw&s') no-repeat center center;
+      background-size: cover;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .header-banner h1 {
+      font-size: 24px;
+      color: #4b2c20;
+      margin-bottom: 8px;
+      font-weight: 700;
+      text-shadow: 1px 1px 4px #fff7f0;
+      text-transform: capitalize;
+    }
+    .big-data {
+      font-size: 88px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #5a6ef0, #d172d2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.15);
+      margin: 0;
+    }
+    .sub-text {
+      font-weight: 600;
+      color: #4b2c20;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    .partners-logos {
+      max-width: 360px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .partners-logos img {
+      max-height: 40px;
+      object-fit: contain;
+    }
+
+    .content {
+      padding: 0 20px 40px 20px;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .content h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+      text-transform: capitalize;
+    }
+    .content p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-top: 0;
+      color: #5a5a5a;
+      margin-bottom: 20px;
+      text-transform: capitalize;
+    }
+    .highlight-bar {
+      height: 4px;
+      width: 70px;
+      background-color: #f19801;
+      margin: 10px auto 30px;
+      border-radius: 3px;
+    }
+    .btn-action {
+      display: inline-block;
+      background: linear-gradient(90deg, #fbb040, #f17f01);
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 14px 0;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 360px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(241,127,1,0.4);
+      transition: background 0.3s;
+      margin: 0 auto 30px;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+    }
+    .btn-action:hover {
+      background: linear-gradient(90deg, #f17f01, #fbb040);
+    }
+    .stats {
+      font-size: 14px;
+      color: #777;
+      display: flex;
+      justify-content: space-between;
+      max-width: 480px;
+      margin: 0 auto 30px;
+    }
+
+    /* Komentar / comment section style */
+    .comments {
+      max-width: 480px;
+      margin: 0 auto 40px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      padding: 12px 16px;
+    }
+    .comment {
+      border-bottom: 1px solid #eee;
+      padding: 14px 0;
+      font-size: 14px;
+      color: #222;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .comment:last-child {
+      border-bottom: none;
+    }
+    .comment strong {
+      color: #2a6ad1;
+      margin-right: 6px;
+      display: block;
+    }
+    .comment-text {
+      background: #f1f2f6;
+      border-radius: 10px;
+      padding: 8px 12px;
+      flex-grow: 1;
+      word-wrap: break-word;
+    }
+    .comment-meta {
+      font-size: 12px;
+      color: #999;
+      margin-left: 48px;
+      margin-top: 2px;
+    }
+
+    /* Form komentar */
+    .comment-form {
+      max-width: 480px;
+      margin: 0 auto 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .comment-form input[type="text"],
+    .comment-form textarea {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 14px;
+      resize: vertical;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .comment-form button {
+      background: #2169ff;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 12px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .comment-form button:hover {
+      background: #194ecc;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+      color: #4b4b4b;
+    }
+    @media (max-width: 600px) {
+      .comments, .content, .comment-form {
+        max-width: 100%;
+        padding: 0 10px;
+      }
+      .stats {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner" role="banner">
+    <h1>Selamat hari raya galungan dan kuningan</h1>
+    <p class="big-data" aria-label="800 Gigabyte Data">800GB</p>
+    <p class="sub-text">Data gratis untuk semua</p>
+
+    <div class="partners-logos" aria-label="Logo mitra provider data">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9yk8TsAtP2dsrQH2Kq1Z1WmIo6KcPwUf1drcMfgs6KA&s=10" alt="Logo Telkomsel" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLJOX8MHFxk6rENtEj9RgcRWluKEPTJHT0th14AQOV2w&s=10" alt="Logo XLSMART" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM5Q9oR5hxSeKjs0WCZ60792UxJxvhmoSx1iwkZ9wm8A&s" alt="Logo Indosat Ooredoo" />
+    </div>
+  </div>
+
+  <main class="content" role="main">
+    <h2>Selamat hari raya galungan dan kuningan! 800GB data gratis langsung kamu dapatkan!</h2>
+    <p>
+      Dalam rangka hari raya galungan dan kuningan, kami memberikan 800GB data gratis agar harimu semakin hangat.
+    </p>
+    <div class="highlight-bar" aria-hidden="true"></div>
+    <a href="index.html" class="btn-action" aria-label="Lihat Penawaran Sekarang">LIHAT SEKARANG</a>
+
+    <div class="stats" aria-label="Statistik interaksi pengguna">
+      <div>144K</div>
+      <div>27K Suka • 16K Komentar</div>
+    </div>
+  </main>
+
+  <!-- Form untuk komentar baru -->
+  <section class="comment-form" aria-label="Formulir komentar">
+    <label for="name">Nama</label>
+    <input type="text" id="name" placeholder="Masukkan nama Anda" required />
+    <label for="comment">Komentar</label>
+    <textarea id="comment" rows="4" placeholder="Tulis komentar Anda di sini..." required></textarea>
+    <button id="submitComment">Kirim Komentar</button>
+  </section>
+
+  <!-- Komentar yang sudah ada dan yang dikirim -->
+  <section class="comments" aria-label="Komentar pengguna" id="comments">
+    <div class="comment" id="comment1">
+      <div>
+        <strong>Bang Diaman Nawawi</strong>
+        <div class="comment-text">Nggak nyangka beneran dapat 800GB data gratis, seneng banget!</div>
+        <div class="comment-meta">8m lalu</div>
+      </div>
+    </div>
+    <div class="comment" id="comment2">
+      <div>
+        <strong>Fauzan Nautica</strong>
+        <div class="comment-text">Kirain bohongan, tapi beneran dikasih 800GB data gratis.</div>
+        <div class="comment-meta">13m lalu</div>
+      </div>
+    </div>
+    <div class="comment" id="comment3">
+      <div>
+        <strong>FazaAlba</strong>
+        <div class="comment-text">Terima kasih atas 800GB data gratisnya, pas sekali karena kuotaku baru habis.</div>
+        <div class="comment-meta">18m lalu</div>
+      </div>
+    </div>
+    <div class="comment" id="comment4">
+      <div>
+        <strong>Maiu Tehnik Hamid</strong>
+        <div class="comment-text">Data gratis ini sangat membantu saya selama liburan galungan & kuningan.</div>
+        <div class="comment-meta">22m lalu</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Fungsi untuk membuat waktu simulasi "baru saja"
+    function waktuRelatif() {
+      return 'baru saja';
+    }
+
+    document.getElementById('submitComment').addEventListener('click', function () {
+      const nameInput = document.getElementById('name');
+      const commentInput = document.getElementById('comment');
+      const commentsSection = document.getElementById('comments');
+
+      const name = nameInput.value.trim();
+      const comment = commentInput.value.trim();
+
+      if (!name) {
+        alert('Mohon masukkan nama Anda.');
+        nameInput.focus();
+        return;
+      }
+      if (!comment) {
+        alert('Mohon tulis komentar Anda.');
+        commentInput.focus();
+        return;
+      }
+
+      // Buat elemen komentar baru
+      const newComment = document.createElement('div');
+      newComment.classList.add('comment');
+
+      newComment.innerHTML = `
+        <div>
+          <strong>${escapeHtml(name)}</strong>
+          <div class="comment-text">${escapeHtml(comment)}</div>
+          <div class="comment-meta">${waktuRelatif()}</div>
+        </div>
+      `;
+
+      // Tambahkan komentar baru paling atas
+      commentsSection.insertBefore(newComment, commentsSection.firstChild);
+
+      // Bersihkan form
+      nameInput.value = '';
+      commentInput.value = '';
+      nameInput.focus();
+    });
+
+    // Fungsi sederhana untuk escape HTML agar aman saat memasukkan komentar
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+  </script>
+
+</body>
+</html>
