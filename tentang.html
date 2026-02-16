@@ -1,0 +1,249 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Satap Jaya</title>
+    <style>
+        /* Reset dan gaya umum */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Background video */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        /* Overlay untuk membuat teks lebih terbaca */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Sesuaikan opacity untuk kontras */
+            z-index: -1;
+        }
+        
+        /* Header dengan logo dan nama */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background: #fff;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Navigasi */
+        nav {
+            margin-top: 30px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        
+        /* Konten utama (khusus Tentang Kami) */
+        main {
+            padding: 50px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        main p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        
+        /* Musik otomatis (tersembunyi) */
+        audio {
+            display: none;
+        }
+        
+        /* Tombol play fallback (jika autoplay gagal) */
+        #playButton {
+            display: none; /* Tersembunyi secara default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        #playButton:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background video dengan autoplay langsung -->
+    <video id="background-video" autoplay loop muted>
+        <!-- Ganti dengan path file Anda jika berbeda, atau gunakan URL online untuk uji -->
+        <source src="vision.mp4" type="video/mp4">
+        Browser Anda tidak mendukung elemen video.
+    </video>
+    <div class="overlay"></div>
+    
+    <!-- Tombol play fallback -->
+    <button id="playButton" onclick="playVideo()">Play Video</button>
+    
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <!-- Placeholder logo; ganti dengan gambar Anda -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qTJZRd3Wo5JBe72OhVbEnmTIc_d7LHphIqQR9DQSiQ&s" alt="Logo Satap Jaya">
+        </div>
+        <h1>Tentang Satap Jaya</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="hubungi.html">Hubungi Kami</a></li>
+                <li><a href="allmore.html">All More</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Konten utama (khusus Tentang Kami) -->
+    <main id="tentang">
+        <h2>Tentang Kami</h2>
+        <p>Satap Jaya adalah tempat dimana para antek anteknya berasal</p>
+        <p> </p>
+        <section id="hubungi" style="margin-top: 50px;">
+            <h2></h2>
+            <p></p>
+        </section>
+        <section id="allmore" style="margin-top: 50px;">
+            <h2></h2>
+            <p> </p>
+        </section>
+    </main>
+    
+    <!-- Musik otomatis -->
+    <audio id="background-audio" autoplay loop>
+        <!-- Ganti dengan path file Anda jika berbeda -->
+        <source src="vision.mp3" type="audio/wav">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    
+    <!-- JavaScript untuk debug autoplay dan fallback -->
+    <script>
+        // Fungsi untuk play manual
+        function playVideo() {
+            const video = document.getElementById('background-video');
+            video.play().catch(error => {
+                console.log('Play manual gagal:', error);
+            });
+            document.getElementById('playButton').style.display = 'none';
+        }
+        
+        // Debug autoplay
+        window.addEventListener('load', function() {
+            const video = document.getElementById('background-video');
+            
+            // Jika autoplay gagal, tampilkan tombol
+            video.addEventListener('play', function() {
+                console.log('Video autoplay berhasil');
+            });
+            video.addEventListener('pause', function() {
+                console.log('Video pause (autoplay mungkin diblokir)');
+                document.getElementById('playButton').style.display = 'block';
+            });
+            video.addEventListener('error', function(e) {
+                console.log('Error video:', e);
+                alert('Video gagal dimuat. Periksa path file atau gunakan video online.');
+                document.getElementById('playButton').style.display = 'block';
+            });
+            video.addEventListener('loadeddata', function() {
+                console.log('Video berhasil dimuat');
+            });
+        });
+        
+        // Hentikan audio saat meninggalkan halaman (mencegah overlap)
+        window.addEventListener('beforeunload', function() {
+            const audio = document.getElementById('background-audio');
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0; // Reset ke awal
+            }
+        });
+    </script>
+</body>
+</html>
